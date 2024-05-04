@@ -23,7 +23,7 @@ function handleFavoritePage(req,res)
 }
 // Server error handler
 function handleServerError(err, req, res, next) {
-    console.error(err); // Log the error for debugging purposes
+    console.error(err); 
   
     const errorResponse = {
       status: 500,
@@ -33,7 +33,7 @@ function handleServerError(err, req, res, next) {
     res.status(500).json(errorResponse);
   }
   
-  // Page not found error handler
+  
   function handlePageNotFoundError(req, res) {
     const errorResponse = {
       status: 404,
