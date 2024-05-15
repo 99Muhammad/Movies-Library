@@ -8,7 +8,7 @@ app.use(cors())
 app.use(express.json())
 let pg = require('pg')
 const client = new pg.Client('postgresql://localhost:5432/moviedb')
-const port = 3000;
+const port = process.env.PORT;
 const Key_api = process.env.Key_api;
 app.use(express.json())
 const axios = require("axios");
@@ -189,9 +189,10 @@ function handerError(err,req,res){
     });
 }
 
+
 client.connect()
 .then(()=>{  
     app.listen(port, () => {
-        console.log(`listing to port ${port}`)
+        console.log(`listing to port : ${port}`)
     });
 })
