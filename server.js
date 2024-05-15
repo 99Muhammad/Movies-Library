@@ -7,7 +7,8 @@ const cors = require('cors')
 app.use(cors())
 app.use(express.json())
 let pg = require('pg')
-const client = new pg.Client('postgresql://localhost:5432/moviedb')
+const PG_URL=process.env.PG_URL;
+const client = new pg.Client(PG_URL)
 const port = process.env.PORT;
 const Key_api = process.env.Key_api;
 app.use(express.json())
@@ -136,6 +137,7 @@ function deletemovie(req,res){
         handerError(err,req,res)
     })
 }
+
 function updatemovie(req,res){
     const id = req.params.id;
     const sql =`UPDATE movie SET title=$1, release_date=$2, poster_path=$3, overview=$4, comments=$5 where id=${id} RETURNING *`;
@@ -152,6 +154,7 @@ function updatemovie(req,res){
     handerError(err,req,res)
    })
 }
+
 function getmovies(req,res){
     const id = req.params.id;
     const sql = `SELECT * FROM movie where id=${id}`
