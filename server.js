@@ -167,12 +167,7 @@ function getmovies(req,res){
         handerError(err,req,res)
     })
 }
-client.connect()
-.then(()=>{  
-    app.listen(port, () => {
-        console.log(`listing to port ${port}`)
-    });
-})
+
 
 function defulthandler(req, res) {
     res.status(404).json({
@@ -193,3 +188,10 @@ function handerError(err,req,res){
         "responseText": `"Sorry, something  went wrong":  ${err}`
     });
 }
+
+client.connect()
+.then(()=>{  
+    app.listen(port, () => {
+        console.log(`listing to port ${port}`)
+    });
+})
